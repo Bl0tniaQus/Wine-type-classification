@@ -1,9 +1,9 @@
 #importowanie modułów potrzebnych do niektórych
 #operacji matematycznych i wykresów
 import math
-from mpl_toolkits import mplot3d
 import numpy as np
 import matplotlib.pyplot as plt
+from mpl_toolkits import mplot3d
 import random
 
 #funkcja inicjalizująca wagi LW między warstwą ukrytą a wyjściową
@@ -46,14 +46,13 @@ def wybierzTestujace(dane_ind, dane):
 #klasa obsługująca pobranie danych z pliku i utworzenie z nich odpowiednich zbiorów
 class Dane:
     def __init__(self, nazwa):
-        self.plik = open(nazwa, "r");
+        self.plik = open(nazwa, "r")
         self.lines = [i.replace(',', ' ').replace('\n', '') for i in self.plik.readlines()]
         self.values = [i.split(' ') for i in self.lines]
         for i in range(0, len(self.values)):
             for j in range(0, len(self.values[1])):
-                if self.values[i][j].isnumeric():
-                    self.values[i][j] = float(self.values[i][j])
-
+                #if self.values[i][j].isnumeric():
+                    self.values[i][j] = float(self.values[i][j])  
         self.T = [i[0] for i in self.values]
         self.Ts = sorted(self.T)
         self.P = [i[1:14] for i in self.values]
